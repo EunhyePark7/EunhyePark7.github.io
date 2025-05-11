@@ -1,0 +1,73 @@
+@use './variables.scss' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    :focus  {
+        outline: none;
+    }
+    [hidden] {
+        display: none;
+    }
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section {
+    display: block;
+}
+html,body {
+    height: 100%;
+    background-color: #fff;
+    color: $text-primary;
+    font-family: Roboto, Arial, sans-serif,-apple-system;
+    font-size: 14px;
+    line-height: 1.5;
+}
+body {
+    line-height: 1;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: none;
+    -webkit-overflow-scrolling: touch;
+}
+input,select,textarea,button {
+    font-family: Roboto, Arial, sans-serif,-apple-system;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $text-primary;
+}
+a {
+    color: $text-primary;
+    text-decoration: none;
+    &:active,&:hover {
+        text-decoration: none;
+    }
+}
+button {
+    border: 0 none;
+    background-color: transparent;
+    cursor: pointer;
+}
+dl,ul,ol,li,menu {
+    list-style: none;
+}
+img {
+    border: 0 none;
+    vertical-align: top;
+}
+input[type="text"],input[type="password"],input[type="submit"],input[type="search"],input[type="checkbox"] {
+    -webkit-appearance: none;
+}
+blockquote,q {
+    quotes: none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
