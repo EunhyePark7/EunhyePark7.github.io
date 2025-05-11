@@ -21,7 +21,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,secti
 html,body {
     height: 100%;
     background-color: #fff;
-    color: $text-primary;
+    color: --text-primary;
     font-family: Roboto, Arial, sans-serif,-apple-system;
     font-size: 14px;
     line-height: 1.5;
@@ -32,14 +32,17 @@ body {
     -webkit-text-size-adjust: none;
     -webkit-overflow-scrolling: touch;
 }
+#root {
+    height: 100vh;
+}
 input,select,textarea,button {
     font-family: Roboto, Arial, sans-serif,-apple-system;
     font-size: 14px;
     line-height: 1.5;
-    color: $text-primary;
+    color: --text-primary;
 }
 a {
-    color: $text-primary;
+    color: --text-primary;
     text-decoration: none;
     &:active,&:hover {
         text-decoration: none;

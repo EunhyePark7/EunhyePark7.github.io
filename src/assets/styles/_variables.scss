@@ -1,11 +1,11 @@
-$text-primary: #0f0f0f;
-
-$icon-active-other: #030303;
-$icon-inactive: #030303;
-$icon-disabled: #909090;
-$brand-icon-active: #030303;
-$brand-icon-inactive: #030303;
-
-$inverted-background: #0f0f0f;
-$additive-background: rgba(0, 0, 0, 0.05);
-$outline: rgba(0, 0, 0, 0.1);
+:root {
+  --text-primary: #0f0f0f;
+  --icon-active: #030303;
+  --icon-inactive: #030303;
+  --icon-disabled: #909090;
+  --brand-icon-active: #030303;
+  --brand-icon-inactive: #030303;
+  --inverted-background: #0f0f0f;
+  --additive-background: rgba(0, 0, 0, 0.05);
+  --outline: rgba(0, 0, 0, 0.1);
+}
