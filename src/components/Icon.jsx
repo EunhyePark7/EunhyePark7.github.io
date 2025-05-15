@@ -3,18 +3,21 @@ import * as bsIcon from 'react-icons/bs';
 import * as fa6Icon from 'react-icons/fa6';
 import styled from 'styled-components';
 
-const Icon = ({ type = 'bs', bsIconName }) => {
-  let IconComponent;
+const Icon = ({ type = 'ai', iconName, activeIconName = '', className = '', isActive = false }) => {
+  const icons = {
+    ai: aiIcon,
+    bs: bsIcon,
+    fa6: fa6Icon,
+  };
 
-  if (type === 'ai') {
-    IconComponent = aiIcon[bsIconName];
-  } else if (type === 'fa6') {
-    IconComponent = fa6Icon[bsIconName];
-  } else {
-    IconComponent = bsIcon[bsIconName];
-  }
+  const IconComponent = icons[type]?.[iconName];
+  const ActiveIconComponent = icons[type]?.[activeIconName];
 
-  return <StyledIcon>{IconComponent ? <IconComponent /> : 'Icon not found'}</StyledIcon>;
+  return (
+    <StyledIcon className={className}>
+      {isActive && ActiveIconComponent ? <ActiveIconComponent /> : <IconComponent />}
+    </StyledIcon>
+  );
 };
 
 export default Icon;
