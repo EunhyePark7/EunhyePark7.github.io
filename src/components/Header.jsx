@@ -1,26 +1,27 @@
-import styled from 'styled-components';
-import Icon from './Icon';
-import ImgLogo from '../assets/images/external-icon.svg';
+import useGlobalStore from '@/stores';
 import { Link } from 'react-router-dom';
-import AvatarBtn from './AvatarBtn';
+import styled from 'styled-components';
+import ImgLogo from '../assets/images/external-icon.svg';
+import ContextMenu from './ContextMenu';
+import Icon from './Icon';
 
 const Header = () => {
+  const toggleNav = useGlobalStore(state => state.toggleNav);
+
   return (
     <StyledHeader>
       <StyledHeaderContainer>
         <StyledHeaderContent>
-          <StyledMenu>
-            <Icon type="ai" bsIconName="AiOutlineMenu" />
-          </StyledMenu>
+          <StyledMenubutton onClick={toggleNav}>
+            <Icon type="ai" iconName="AiOutlineMenu" />
+          </StyledMenubutton>
           <StyledLogo to="/">
             <img src={ImgLogo} alt="logo" width="101" height="20" />
           </StyledLogo>
         </StyledHeaderContent>
+        <StyledHeaderContent></StyledHeaderContent>
         <StyledHeaderContent>
-
-        </StyledHeaderContent>
-        <StyledHeaderContent>
-          <AvatarBtn />
+          <ContextMenu />
         </StyledHeaderContent>
       </StyledHeaderContainer>
     </StyledHeader>
@@ -33,8 +34,8 @@ const StyledHeader = styled.header`
   width: 100%;
   z-index: 100;
   transform: translateY(0);
-  transition: transform .3s cubic-bezier(.05,0,0,1);
-`; 
+  transition: transform 0.3s cubic-bezier(0.05, 0, 0, 1);
+`;
 const StyledHeaderContainer = styled.div`
   height: 56px;
   padding: 0 16px;
@@ -48,7 +49,7 @@ const StyledHeaderContent = styled.div`
   flex-direction: row;
   align-items: center;
 `;
-const StyledMenu = styled.button`
+const StyledMenubutton = styled.button`
   width: 40px;
   height: 40px;
   padding: 8px;
