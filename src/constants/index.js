@@ -3,6 +3,11 @@ export const LANGUAGE = {
   KR: 'KR',
 };
 
+export const LANGUAGE_SETTING = {
+  EN: 'Language',
+  KR: '언어 설정',
+};
+
 export const THEME = {
   DARK: 'DARK',
   WHITE: 'WHITE',
@@ -29,7 +34,7 @@ export const RESUME = {
 };
 
 export const THEME_SETTING = {
-  EN: 'Theme setting',
+  EN: 'Theme',
   KR: '테마 설정',
 };
 
@@ -40,7 +45,7 @@ export const MENU = {
   },
   ABOUT_ME: {
     EN: 'About Me',
-    KR: '나..',
+    KR: '나',
   },
   SKILL: {
     EN: 'Skill',
