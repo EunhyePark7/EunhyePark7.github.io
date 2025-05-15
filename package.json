@@ -27,6 +27,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-unused-imports": "^4.1.4",
     "prettier": "^3.5.3",
+    "react-router-hash-link": "^2.4.3",
     "sass": "^1.64.1",
     "vite": "^4.4.5",
     "vite-jsconfig-paths": "^2.0.1",

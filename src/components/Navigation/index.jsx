@@ -2,15 +2,17 @@ import { MENU } from '@/constants';
 import useGlobalStore from '@/stores';
 import styled from 'styled-components';
 import MenuItem from './MenuItem';
-import { navItems } from './constants';
 
 const Navigation = () => {
   const language = useGlobalStore(state => state.language);
   const isNavCollapsed = useGlobalStore(state => state.isNavCollapsed);
 
+  const { HOME, ABOUT_ME, SKILL, WORK_EXPERIENCE } = MENU;
+  const navItems = [HOME, ABOUT_ME, SKILL, WORK_EXPERIENCE];
+
   return (
     <StyledNavigation collapsed={isNavCollapsed ? '72px' : '240px'} role="navigation" aria-label="Main Navigation">
-      {navItems.map(({ to, iconType, iconName, activeIconName, labelKey }) => (
+      {navItems.map(({ name, to, iconType, iconName, activeIconName, key }) => (
         <MenuItem
           key={to}
           to={to}
@@ -19,7 +21,7 @@ const Navigation = () => {
           activeIconName={activeIconName}
           isCollapsed={isNavCollapsed}
         >
-          {!isNavCollapsed && MENU[labelKey][language]}
+          {!isNavCollapsed && name[language]}
         </MenuItem>
       ))}
     </StyledNavigation>

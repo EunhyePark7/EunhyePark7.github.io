@@ -38,21 +38,68 @@ export const THEME_SETTING = {
   KR: '테마 설정',
 };
 
+/**
+ * name : language
+ * to : url
+ * iconType: react-icons type
+ * iconName: react-icons name (비활성화 아이콘)
+ * activeIconName: react-icons name (활성화 아이콘)
+ */
 export const MENU = {
   HOME: {
-    EN: 'Home',
-    KR: '홈',
+    name: {
+      EN: 'Home',
+      KR: '홈',
+    },
+    to: '/',
+    iconType: 'ai',
+    iconName: 'AiOutlineHome',
+    activeIconName: 'AiFillHome',
   },
   ABOUT_ME: {
-    EN: 'About Me',
-    KR: '나',
+    name: {
+      EN: 'About Me',
+      KR: '나',
+    },
+    to: '/aboutMe',
+    iconType: 'ai',
+    iconName: 'AiOutlineSmile',
+    activeIconName: 'AiFillSmile',
+    contentName: 'About Me',
   },
   SKILL: {
-    EN: 'Skill',
-    KR: '스킬',
+    name: {
+      EN: 'Skill',
+      KR: '스킬',
+    },
+    to: '/skill',
+    iconType: 'ai',
+    iconName: 'AiTwotoneAppstore',
+    activeIconName: 'AiFillAppstore',
+    contentName: 'Skill',
   },
   WORK_EXPERIENCE: {
-    EN: 'Work Experience',
-    KR: '회사',
+    name: {
+      EN: 'Work Experience',
+      KR: '회사',
+    },
+    to: '/work',
+    iconType: 'bs',
+    iconName: 'BsBuilding',
+    activeIconName: 'BsBuildingFill',
+  },
+  COMPANY: {
+    dkbmc: {
+      contentName: 'Dkbmc',
+      to: '/work#dkbmc',
+    },
+    pixdine: {
+      contentName: 'Pixdine',
+      to: '/work#pixdine',
+    },
+    goodrich: {
+      contentName: 'GoodRich',
+      to: '/work#goodrich',
+    },
   },
 };

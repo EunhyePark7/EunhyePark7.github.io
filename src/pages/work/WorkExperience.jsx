@@ -1,4 +1,7 @@
 import AppLayout from '@/components/AppLayout';
+import Dkbmc from '@/components/Company/Dkbmc';
+import GoodRich from '@/components/Company/GoodRich';
+import Pixdine from '@/components/Company/Pixdine';
 
 /**
  * 회사 이력
@@ -8,6 +11,9 @@ const WorkExperience = () => {
   return (
     <AppLayout>
       <h1>WorkExperience page</h1>
+      <GoodRich />
+      <Pixdine />
+      <Dkbmc />
     </AppLayout>
   );
 };

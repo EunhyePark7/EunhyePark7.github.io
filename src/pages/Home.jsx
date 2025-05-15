@@ -1,30 +1,37 @@
 import AppLayout from '@/components/AppLayout';
+import { MENU } from '@/constants';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 
 /**
  * 메인 페이지
  */
-const contentItems = [
-  { id: 1, title: 'AboutMe', to: '/AboutMe' },
-  { id: 2, title: 'Skill', to: '/Skill' },
-  { id: 3, title: 'Dkbmc', to: '/Dkbmc' },
-  { id: 4, title: 'Pixdine', to: '/Pixdine' },
-  { id: 5, title: 'GoodRich', to: '/GoodRich' },
-];
-
 const Home = () => {
+  const { ABOUT_ME, SKILL, COMPANY } = MENU;
+  const contentItems = [ABOUT_ME, SKILL, COMPANY.dkbmc, COMPANY.pixdine, COMPANY.goodrich];
   return (
     <AppLayout>
       <StyledContentList>
-        {contentItems.map(({ id, title, to }) => (
-          <StyledContentItem key={id}>
-            <Link to={to} aria-label={`Go to ${title} page`}>
-              <StyledItemThumbnail />
-              <StyledItemTitle>{title}</StyledItemTitle>
-            </Link>
-          </StyledContentItem>
-        ))}
+        {contentItems.map(({ contentName, to }, index) => {
+          const hasHash = to.includes('#');
+
+          return (
+            <StyledContentItem key={to}>
+              {hasHash ? (
+                <HashLink smooth to={to}>
+                  <StyledItemThumbnail />
+                  <StyledItemTitle>{contentName}</StyledItemTitle>
+                </HashLink>
+              ) : (
+                <Link to={to} aria-label={`Go to ${contentName} page`}>
+                  <StyledItemThumbnail />
+                  <StyledItemTitle>{contentName}</StyledItemTitle>
+                </Link>
+              )}
+            </StyledContentItem>
+          );
+        })}
       </StyledContentList>
     </AppLayout>
   );
