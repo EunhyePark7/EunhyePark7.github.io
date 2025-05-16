@@ -7,8 +7,10 @@ const MenuItem = ({ to, iconType = 'ai', iconName, activeIconName, children, isC
     <StyledNavItem to={to} end>
       {({ isActive }) => (
         <>
-          <StyledIcon type={iconType} iconName={isActive ? activeIconName : iconName} isActive={isActive} />
-          {!isCollapsed && <span>{children}</span>}
+          <StyledIconBox $collapsed={isCollapsed}>
+            <Icon type={iconType} iconName={iconName} activeIconName={activeIconName} isActive={isActive} />
+          </StyledIconBox>
+          <StyledText $collapsed={isCollapsed}>{children}</StyledText>
         </>
       )}
     </StyledNavItem>
@@ -25,14 +27,33 @@ const StyledNavItem = styled(NavLink)`
   color: inherit;
   border-radius: 10px;
   text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+
   &:hover {
-    background-color: #f0f0f0;
+    background-color: var(--additive-background);
   }
+
   &.active,
   &[aria-current='page'] {
     background-color: var(--additive-background);
   }
 `;
-const StyledIcon = styled(Icon)`
-  margin-right: 24px;
+
+const StyledIconBox = styled.div`
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-right: ${({ $collapsed }) => ($collapsed ? '0' : '24px')};
+  transition: margin 0.3s ease;
+`;
+
+const StyledText = styled.span`
+  opacity: ${({ $collapsed }) => ($collapsed ? 0 : 1)};
+  visibility: ${({ $collapsed }) => ($collapsed ? 'hidden' : 'visible')};
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+  white-space: nowrap;
 `;

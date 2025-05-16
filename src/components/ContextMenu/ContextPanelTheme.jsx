@@ -1,15 +1,17 @@
-import { THEME, THEME_SETTING } from '@/constants';
+import { THEME, THEME_LABELS, THEME_SETTING } from '@/constants';
 import useGlobalStore from '@/stores';
 import styled from 'styled-components';
 import Icon from '../Icon';
 
-const AvatarPanelTheme = ({ onPanelChange }) => {
+const ContextPanelTheme = ({ onPanelChange }) => {
   const language = useGlobalStore(state => state.language);
   const theme = useGlobalStore(state => state.theme);
   const setTheme = useGlobalStore(state => state.setTheme);
 
   const handleThemeChange = selectedTheme => {
-    setTheme(selectedTheme);
+    if (selectedTheme !== theme) {
+      setTheme(selectedTheme);
+    }
   };
 
   return (
@@ -22,30 +24,23 @@ const AvatarPanelTheme = ({ onPanelChange }) => {
       </StyledTitle>
 
       <StyledThemeList>
-        <StyledThemeItem onClick={() => handleThemeChange(THEME.WHITE)} $active={theme === THEME.WHITE}>
-          {language === THEME.WHITE && <StyledCheckIcon type="ai" iconName="AiOutlineCheck" />}
-          <span>기본</span>
-        </StyledThemeItem>
-        <StyledThemeItem onClick={() => handleThemeChange(THEME.DARK)} $active={theme === THEME.DARK}>
-          {language === THEME.DARK && <StyledCheckIcon type="ai" iconName="AiOutlineCheck" />}
-          <span>다크</span>
-        </StyledThemeItem>
-        <StyledThemeItem onClick={() => handleThemeChange(THEME.SYSTEM)} $active={theme === THEME.SYSTEM}>
-          {language === THEME.SYSTEM && <StyledCheckIcon type="ai" iconName="AiOutlineCheck" />}
-          <span>시스템 설정</span>
-        </StyledThemeItem>
+        {Object.entries(THEME).map(([key, value]) => (
+          <StyledThemeItem key={value} onClick={() => handleThemeChange(value)} $active={theme === value}>
+            {theme === value && <StyledCheckIcon type="ai" iconName="AiOutlineCheck" />}
+            <span>{THEME_LABELS[key][language]}</span>
+          </StyledThemeItem>
+        ))}
       </StyledThemeList>
     </StyledThemePanel>
   );
 };
 
-export default AvatarPanelTheme;
+export default ContextPanelTheme;
 
 const StyledThemePanel = styled.div``;
 
 const StyledTitle = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   height: 49px;
   border-bottom: 1px solid var(--outline);
@@ -60,6 +55,7 @@ const StyledBackButton = styled.button`
   padding: 2px;
   margin: 0 4px;
   border-radius: 50%;
+  cursor: pointer;
   &:hover {
     background-color: var(--outline);
   }
@@ -72,23 +68,24 @@ const StyledBackIcon = styled(Icon)`
 
 const StyledThemeList = styled.ul`
   padding: 8px 0;
+  margin: 0;
+  list-style: none;
 `;
 
-const StyledThemeItem = styled.li.withConfig({
-  shouldForwardProp: prop => prop !== '$active',
-})`
+const StyledThemeItem = styled.li`
   position: relative;
   display: flex;
-  flex-direction: row;
   align-items: center;
   height: 40px;
   padding: 0 16px 0 48px;
   cursor: pointer;
   line-height: 40px;
+  background-color: var(--menu-backgound);
   &:hover {
-    background-color: #f4f4f4;
+    background-color: var(--additive-background);
   }
 `;
+
 const StyledCheckIcon = styled(Icon)`
   position: absolute;
   left: 16px;
@@ -96,22 +93,3 @@ const StyledCheckIcon = styled(Icon)`
   height: 16px;
   margin-right: 16px;
 `;
-
-// const StyledThemeItem = styled.div.withConfig({
-//   shouldForwardProp: prop => prop !== '$active',
-// })`
-//   display: flex;
-//   align-items: center;
-//   gap: 12px;
-//   height: 40px;
-//   padding: 0 36px 0 16px;
-//   cursor: pointer;
-//   line-height: 40px;
-//   background-color: ${({ $active }) => ($active ? '#f0e6ff' : 'transparent')};
-//   color: ${({ $active }) => ($active ? '#6719db' : 'inherit')};
-//   font-weight: ${({ $active }) => ($active ? 'bold' : 'normal')};
-
-//   &:hover {
-//     background-color: #f4f4f4;
-//   }
-// `;

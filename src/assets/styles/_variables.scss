@@ -1,3 +1,4 @@
+// 기본 테마 (light)
 :root {
   --text-primary: #0f0f0f;
   --icon-active: #030303;
@@ -5,7 +6,43 @@
   --icon-disabled: #909090;
   --brand-icon-active: #030303;
   --brand-icon-inactive: #030303;
+  --default-background: #ffffff;
+  --menu-backgound: #ffffff;
+  --overlay-background: rgba(255, 255, 255, 0.8);
   --inverted-background: #0f0f0f;
   --additive-background: rgba(0, 0, 0, 0.05);
   --outline: rgba(0, 0, 0, 0.1);
+  --white: #ffffff;
+}
+
+// 다크 테마
+[data-theme='dark'] {
+  --text-primary: #ffffff;
+  --icon-active: #ffffff;
+  --icon-inactive: #aaaaaa;
+  --icon-disabled: #555555;
+  --brand-icon-active: #ffffff;
+  --brand-icon-inactive: #aaaaaa;
+  --default-background: #0f0f0f;
+  --menu-backgound: #282828;
+  --overlay-background: rgba(15, 15, 15, 0.6);
+  --inverted-background: #ffffff;
+  --additive-background: rgba(255, 255, 255, 0.1);
+  --outline: rgba(255, 255, 255, 0.2);
+}
+
+// 시스템 테마 (prefers-color-scheme)
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='dark']) {
+    --text-primary: #ffffff;
+    --icon-active: #ffffff;
+    --icon-inactive: #aaaaaa;
+    --icon-disabled: #555555;
+    --brand-icon-active: #ffffff;
+    --brand-icon-inactive: #aaaaaa;
+    --default-background: #0f0f0f;
+    --inverted-background: #ffffff;
+    --additive-background: rgba(255, 255, 255, 0.05);
+    --outline: rgba(255, 255, 255, 0.2);
+  }
 }

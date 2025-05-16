@@ -3,16 +3,6 @@ export const LANGUAGE = {
   KR: 'KR',
 };
 
-export const LANGUAGE_SETTING = {
-  EN: 'Language',
-  KR: '언어 설정',
-};
-
-export const THEME = {
-  DARK: 'DARK',
-  WHITE: 'WHITE',
-};
-
 export const SMALL_NAME = {
   EN: 'EH',
   KR: '은혜',
@@ -28,6 +18,28 @@ export const DEVELOPER = {
   KR: '개발자',
 };
 
+export const LANGUAGE_SETTING = {
+  EN: 'Language',
+  KR: '언어 설정',
+};
+
+export const LANGUAGE_LABELS = {
+  EN: {
+    EN: 'English',
+    KR: '영어',
+  },
+  KR: {
+    EN: 'Korean',
+    KR: '한국어',
+  },
+};
+
+export const THEME = {
+  LIGHT: 'LIGHT',
+  DARK: 'DARK',
+  SYSTEM: 'SYSTEM',
+};
+
 export const RESUME = {
   EN: 'resume',
   KR: '이력서 한눈에 보기',
@@ -36,6 +48,20 @@ export const RESUME = {
 export const THEME_SETTING = {
   EN: 'Theme',
   KR: '테마 설정',
+};
+export const THEME_LABELS = {
+  LIGHT: {
+    EN: 'Light',
+    KR: '밝은 테마',
+  },
+  DARK: {
+    EN: 'Dark',
+    KR: '어두운 테마',
+  },
+  SYSTEM: {
+    EN: 'System',
+    KR: '기기 테마 사용',
+  },
 };
 
 /**
@@ -59,7 +85,7 @@ export const MENU = {
   ABOUT_ME: {
     name: {
       EN: 'About Me',
-      KR: '나',
+      KR: '소개',
     },
     to: '/aboutMe',
     iconType: 'ai',
@@ -69,19 +95,19 @@ export const MENU = {
   },
   SKILL: {
     name: {
-      EN: 'Skill',
-      KR: '스킬',
+      EN: 'Skills',
+      KR: '보유 기술',
     },
     to: '/skill',
     iconType: 'ai',
     iconName: 'AiTwotoneAppstore',
     activeIconName: 'AiFillAppstore',
-    contentName: 'Skill',
+    contentName: 'Skills',
   },
   WORK_EXPERIENCE: {
     name: {
       EN: 'Work Experience',
-      KR: '회사',
+      KR: '경력',
     },
     to: '/work',
     iconType: 'bs',

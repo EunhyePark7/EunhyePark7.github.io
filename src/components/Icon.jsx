@@ -10,12 +10,12 @@ const Icon = ({ type = 'ai', iconName, activeIconName = '', className = '', isAc
     fa6: fa6Icon,
   };
 
-  const IconComponent = icons[type]?.[iconName];
-  const ActiveIconComponent = icons[type]?.[activeIconName];
+  const DefaultIcon = icons[type]?.[iconName];
+  const ActiveIcon = icons[type]?.[activeIconName];
 
   return (
     <StyledIcon className={className}>
-      {isActive && ActiveIconComponent ? <ActiveIconComponent /> : <IconComponent />}
+      {isActive && ActiveIcon ? <ActiveIcon /> : DefaultIcon ? <DefaultIcon /> : null}
     </StyledIcon>
   );
 };
@@ -24,13 +24,12 @@ export default Icon;
 
 const StyledIcon = styled.span`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 24px;
   height: 24px;
+
   svg {
-    display: block;
     width: 100%;
     height: 100%;
     fill: var(--text-primary);

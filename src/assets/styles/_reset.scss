@@ -17,12 +17,8 @@
 }
 article,
 aside,
-details,
-figcaption,
-figure,
-footer,
 header,
-hgroup,
+footer,
 main,
 menu,
 nav,
@@ -32,7 +28,7 @@ section {
 html,
 body {
   height: 100%;
-  background-color: #fff;
+  background-color: var(--default-background);
   color: var(--text-primary);
   font-family:
     Roboto,

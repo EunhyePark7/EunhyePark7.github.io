@@ -3,72 +3,78 @@ import useGlobalStore from '@/stores';
 import styled from 'styled-components';
 import Icon from '../Icon';
 
-const AvatarPanelDefault = ({ onPanelChange }) => {
+const ContextPanelDefault = ({ onPanelChange }) => {
   const language = useGlobalStore(state => state.language);
-  const setLanguage = useGlobalStore(state => state.setLanguage);
 
   return (
     <StyledMenuPanel>
       <StyledTitle>
-        <StyledAvatar>{SMALL_NAME[language]}</StyledAvatar>
+        <StyledUser>{SMALL_NAME[language]}</StyledUser>
         <span>
           {FULL_NAME[language]}
           <br />
           @UI{DEVELOPER[language]}
         </span>
       </StyledTitle>
-      <StyledAvatarMenu>
-        <StyledAvatarMenuItem>
-          <StyledMenuIcon type="ai" iconName="AiTwotoneFileText" />
+
+      <StyledMenu>
+        <StyledMenuItem>
+          <StyledMenuIcon type="ai" iconName="AiOutlineFileText" />
           <span>{RESUME[language]}</span>
-        </StyledAvatarMenuItem>
-        <StyledAvatarMenuItem onClick={() => onPanelChange('theme')}>
+        </StyledMenuItem>
+
+        <StyledMenuItem onClick={() => onPanelChange('theme')}>
           <StyledMenuIcon type="ai" iconName="AiTwotoneSliders" />
           <span>{THEME_SETTING[language]}</span>
           <StyledArrowIcon type="ai" iconName="AiOutlineRight" />
-        </StyledAvatarMenuItem>
-        <StyledAvatarMenuItem onClick={() => onPanelChange('language')}>
+        </StyledMenuItem>
+
+        <StyledMenuItem onClick={() => onPanelChange('language')}>
           <StyledMenuIcon type="bs" iconName="BsType" />
           <span>{LANGUAGE_SETTING[language]}</span>
           <StyledArrowIcon type="ai" iconName="AiOutlineRight" />
-        </StyledAvatarMenuItem>
-      </StyledAvatarMenu>
+        </StyledMenuItem>
+      </StyledMenu>
     </StyledMenuPanel>
   );
 };
 
-export default AvatarPanelDefault;
+export default ContextPanelDefault;
 
 const StyledMenuPanel = styled.div``;
+
 const StyledTitle = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 16px;
   border-bottom: 1px solid var(--outline);
+
   button {
-    margin: 0 16px 0 0;
+    margin-right: 16px;
     cursor: default;
   }
 `;
-const StyledAvatar = styled.span`
+
+const StyledUser = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
-  cursor: pointer;
   margin-right: 16px;
   font-size: 14px;
   border-radius: 50%;
   background-color: #6719db;
-  color: #fff;
+  color: var(--white);
   overflow: hidden;
 `;
-const StyledAvatarMenu = styled.div`
+
+const StyledMenu = styled.div`
   padding: 8px 0;
 `;
-const StyledAvatarMenuItem = styled.div`
+
+const StyledMenuItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -76,13 +82,16 @@ const StyledAvatarMenuItem = styled.div`
   padding: 0 16px;
   cursor: pointer;
   line-height: 40px;
+
   &:hover {
-    background-color: #f4f4f4;
+    background-color: var(--additive-background);
   }
 `;
+
 const StyledMenuIcon = styled(Icon)`
   margin-right: 16px;
 `;
+
 const StyledArrowIcon = styled(Icon)`
   width: 16px;
   height: 16px;

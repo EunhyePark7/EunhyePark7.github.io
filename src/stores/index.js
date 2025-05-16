@@ -2,7 +2,7 @@ import { LANGUAGE, THEME } from '@/constants';
 import { create } from 'zustand';
 
 const useGlobalStore = create((set, get) => ({
-  theme: THEME.WHITE,
+  theme: THEME.LIGHT,
   language: LANGUAGE.EN,
   isNavCollapsed: false,
   pageHistory: [],

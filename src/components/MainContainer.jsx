@@ -1,22 +1,29 @@
+import useGlobalStore from '@/stores';
 import styled from 'styled-components';
 import Navigation from './Navigation';
 
-const MainContent = ({ children }) => {
+const MainContainer = ({ children }) => {
+  const isNavCollapsed = useGlobalStore(state => state.isNavCollapsed);
+
   return (
     <StyledMainContainer>
       <Navigation />
-      <StyledMainWrap>{children}</StyledMainWrap>
+      <StyledMainWrap $collapsed={isNavCollapsed}>{children}</StyledMainWrap>
     </StyledMainContainer>
   );
 };
 
-export default MainContent;
+export default MainContainer;
 
 const StyledMainContainer = styled.div`
   display: flex;
   flex-grow: 1;
+  margin-top: 56px;
 `;
+
 const StyledMainWrap = styled.main`
   flex: 1;
-  padding: 12px 20px;
+  padding: 12px 40px;
+  margin-left: ${({ $collapsed }) => ($collapsed ? '80px' : '240px')};
+  transition: margin-left 0.3s ease;
 `;
