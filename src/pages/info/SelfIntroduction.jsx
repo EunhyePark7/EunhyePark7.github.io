@@ -1,13 +1,12 @@
-import React from 'react';
-
+import AppLayout from '@/components/AppLayout';
 /**
  * 자기소개서
  */
 const SelfIntroduction = () => {
   return (
-    <div>
+    <AppLayout>
       <h1>SelfIntroduction page</h1>
-    </div>
+    </AppLayout>
   );
 };
 

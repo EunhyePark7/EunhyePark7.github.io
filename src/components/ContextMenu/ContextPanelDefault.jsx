@@ -1,5 +1,6 @@
 import { DEVELOPER, FULL_NAME, LANGUAGE_SETTING, RESUME, SMALL_NAME, THEME_SETTING } from '@/constants';
 import useGlobalStore from '@/stores';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from '../Icon';
 
@@ -18,10 +19,12 @@ const ContextPanelDefault = ({ onPanelChange }) => {
       </StyledTitle>
 
       <StyledMenu>
-        <StyledMenuItem>
-          <StyledMenuIcon type="ai" iconName="AiOutlineFileText" />
-          <span>{RESUME[language]}</span>
-        </StyledMenuItem>
+        <Link to="/resume">
+          <StyledMenuItem>
+            <StyledMenuIcon type="ai" iconName="AiOutlineFileText" />
+            <span>{RESUME[language]}</span>
+          </StyledMenuItem>
+        </Link>
 
         <StyledMenuItem onClick={() => onPanelChange('theme')}>
           <StyledMenuIcon type="ai" iconName="AiTwotoneSliders" />
