@@ -29,6 +29,7 @@
   --inverted-background: #ffffff;
   --additive-background: rgba(255, 255, 255, 0.1);
   --outline: rgba(255, 255, 255, 0.2);
+  --white: #0f0f0f;
 }
 
 // 시스템 테마 (prefers-color-scheme)
@@ -41,8 +42,11 @@
     --brand-icon-active: #ffffff;
     --brand-icon-inactive: #aaaaaa;
     --default-background: #0f0f0f;
+    --menu-backgound: #282828;
+    --overlay-background: rgba(15, 15, 15, 0.6);
     --inverted-background: #ffffff;
-    --additive-background: rgba(255, 255, 255, 0.05);
+    --additive-background: rgba(255, 255, 255, 0.1);
     --outline: rgba(255, 255, 255, 0.2);
+    --white: #0f0f0f;
   }
 }
