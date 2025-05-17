@@ -18,8 +18,8 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const { HOME, ABOUT_ME, SKILL, WORK_EXPERIENCE } = MENU;
-  const navItems = [HOME, ABOUT_ME, SKILL, WORK_EXPERIENCE];
+  const { HOME, ABOUT_ME, SKILL, WORK_EXPERIENCE, RESUME } = MENU;
+  const navItems = [HOME, ABOUT_ME, SKILL, WORK_EXPERIENCE, RESUME];
 
   return (
     <StyledNavigation $collapsed={isNavCollapsed} $scrolled={isScrolled} role="navigation" aria-label="Main Navigation">

@@ -128,4 +128,14 @@ export const MENU = {
       to: '/work#goodrich',
     },
   },
+  RESUME: {
+    name: {
+      EN: 'Resume',
+      KR: '이력서',
+    },
+    to: '/resume',
+    iconType: 'ai',
+    iconName: 'AiOutlineFileText',
+    activeIconName: 'AiFillFileText',
+  },
 };
