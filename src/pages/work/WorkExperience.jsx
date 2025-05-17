@@ -1,10 +1,11 @@
 import AppLayout from '@/components/AppLayout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const WorkExperience = () => {
   const historyData = [
     {
+      id: 'goodrich',
       company: '굿리치',
       projects: [
         {
@@ -55,6 +56,7 @@ const WorkExperience = () => {
       ],
     },
     {
+      id: 'pixdine',
       company: '픽스다인웨이메이커',
       projects: [
         {
@@ -90,6 +92,7 @@ const WorkExperience = () => {
       ],
     },
     {
+      id: 'dkbmc',
       company: 'DKBMC',
       projects: [
         {
@@ -141,18 +144,32 @@ const WorkExperience = () => {
     },
   ];
 
-  const [activeCompany, setActiveCompany] = useState('굿리치');
+  const [activeCompany, setActiveCompany] = useState('goodrich');
+
+  // 항목 클릭 시 hash 및 상태 변경
+  const handleItemClick = id => {
+    window.location.hash = `#${id}`;
+    setActiveCompany(id);
+  };
+
+  // 페이지 최초 렌더 시 URL hash로 상태 셋팅
+  useEffect(() => {
+    const hash = window.location.hash.substring(1);
+    if (hash && historyData.some(({ id }) => id === hash)) {
+      setActiveCompany(hash);
+    }
+  }, []);
 
   return (
     <AppLayout>
       <>
         <StyledHistoryBar>
           <ol>
-            {historyData.map(({ company }, idx) => (
-              <li key={company}>
+            {historyData.map(({ id, company }, idx) => (
+              <li key={id}>
                 <StyledItemBox
-                  $isActive={activeCompany === company}
-                  onClick={() => setActiveCompany(company)}
+                  $isActive={activeCompany === id}
+                  onClick={() => handleItemClick(id)}
                   $offset={idx === 1 ? -69 : 10}
                 >
                   <strong>{company}</strong>
@@ -174,7 +191,7 @@ const WorkExperience = () => {
 
         <StyledHistory>
           {historyData
-            .find(({ company }) => company === activeCompany)
+            .find(({ id }) => id === activeCompany)
             ?.projects.map((project, index) => (
               <li key={index}>
                 <strong>{project.title}</strong>
