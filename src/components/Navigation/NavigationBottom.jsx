@@ -19,22 +19,26 @@ const NavigationBottom = () => {
   return (
     <StyledWrap>
       <StyledDivider />
-      <NavigationItem
-        iconType={CONTACT_ME.CONTACT.iconType}
-        iconName={CONTACT_ME.CONTACT.iconName}
-        activeIconName={CONTACT_ME.CONTACT.activeIconName}
-        isCollapsed={isNavCollapsed}
-      >
-        <div onClick={() => setModalOpen(true)}>{CONTACT_ME.CONTACT.name[language]}</div>
-      </NavigationItem>
-      <NavigationItem
-        iconType={CONTACT_ME.GITHUB.iconType}
-        iconName={CONTACT_ME.GITHUB.iconName}
-        activeIconName={CONTACT_ME.GITHUB.activeIconName}
-        isCollapsed={isNavCollapsed}
-      >
-        <div onClick={openGithub}>{CONTACT_ME.GITHUB.name[language]}</div>
-      </NavigationItem>
+      <div onClick={() => setModalOpen(true)}>
+        <NavigationItem
+          iconType={CONTACT_ME.CONTACT.iconType}
+          iconName={CONTACT_ME.CONTACT.iconName}
+          activeIconName={CONTACT_ME.CONTACT.activeIconName}
+          isCollapsed={isNavCollapsed}
+        >
+          {CONTACT_ME.CONTACT.name[language]}
+        </NavigationItem>
+      </div>
+      <div onClick={openGithub}>
+        <NavigationItem
+          iconType={CONTACT_ME.GITHUB.iconType}
+          iconName={CONTACT_ME.GITHUB.iconName}
+          activeIconName={CONTACT_ME.GITHUB.activeIconName}
+          isCollapsed={isNavCollapsed}
+        >
+          {CONTACT_ME.GITHUB.name[language]}
+        </NavigationItem>
+      </div>
 
       <ContactFormModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </StyledWrap>

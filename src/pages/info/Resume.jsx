@@ -1,6 +1,7 @@
 import ImgProfile from '@/assets/images/profile.png';
 import AppLayout from '@/components/AppLayout';
 import Icon from '@/components/Icon';
+import { media } from '@/styles/media';
 import { useRef } from 'react';
 import generatePDF from 'react-to-pdf';
 import styled from 'styled-components';
@@ -12,7 +13,7 @@ const Resume = () => {
       <StyledWrap>
         <StyledButtonWrap>
           <button onClick={() => generatePDF(targetRef, { filename: '박은혜 이력서.pdf' })}>
-            <Icon type="bs" iconName="BsFiletypePdf" />
+            <StyledIcon type="bs" iconName="BsFiletypePdf"></StyledIcon>
             <span>이력서 다운로드</span>
           </button>
         </StyledButtonWrap>
@@ -218,7 +219,18 @@ const StyledButtonWrap = styled.div`
     border: 1px solid var(--outline);
     border-radius: 10px;
     font-size: 12px;
+    &:hover {
+      background-color: var(--additive-background);
+    }
   }
+  @media ${media.mobile} {
+    margin-bottom: 10px;
+  }
+`;
+
+const StyledIcon = styled(Icon)`
+  width: 20px;
+  height: 20px;
 `;
 
 const StyledResume = styled.div`
@@ -227,12 +239,23 @@ const StyledResume = styled.div`
   margin: 0 auto;
   background-color: #fff;
   color: #030303;
+  @media ${media.mobile} {
+    padding: 0;
+  }
 `;
 const StyledProfile = styled.div`
   display: flex;
   flex-direction: row;
+  @media ${media.mobile} {
+    flex-direction: column;
+  }
 `;
-const StyledImg = styled.div``;
+const StyledImg = styled.div`
+  text-align: center;
+  img {
+    width: 100px;
+  }
+`;
 const StyledDetail = styled.div`
   flex: 1;
   padding: 36px;
@@ -240,6 +263,10 @@ const StyledDetail = styled.div`
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
+  }
+  @media ${media.mobile} {
+    padding: 0;
+    margin-top: 10px;
   }
 `;
 const StyledDetailList = styled.div`
@@ -260,6 +287,9 @@ const StyledDetailList = styled.div`
       margin-left: 10px;
     }
   }
+  @media ${media.mobile} {
+    flex-direction: column;
+  }
 `;
 const StyledBase = styled.div`
   margin-top: 30px;
@@ -269,6 +299,9 @@ const StyledBase = styled.div`
     margin-bottom: 12px;
     font-size: 20px;
     font-weight: 700;
+  }
+  @media ${media.mobile} {
+    margin-top: 20px;
   }
 `;
 const StyledBaseList = styled.ul`
@@ -282,9 +315,18 @@ const StyledBaseList = styled.ul`
       border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
   }
+  @media ${media.mobile} {
+    li {
+      flex-direction: column;
+      padding: 16px 0;
+    }
+  }
 `;
 const StyledBaseDate = styled.div`
   min-width: 200px;
+  @media ${media.mobile} {
+    min-width: none;
+  }
 `;
 const StyledBaseContent = styled.div`
   margin-left: 40px;
@@ -299,5 +341,9 @@ const StyledBaseContent = styled.div`
   }
   p {
     line-height: 1.2;
+  }
+  @media ${media.mobile} {
+    margin-left: 0;
+    margin-top: 10px;
   }
 `;

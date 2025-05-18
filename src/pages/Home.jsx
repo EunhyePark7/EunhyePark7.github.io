@@ -1,5 +1,6 @@
 import AppLayout from '@/components/AppLayout';
 import { MENU } from '@/constants';
+import { media } from '@/styles/media';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
@@ -12,7 +13,7 @@ const Home = () => {
   const contentItems = [ABOUT_ME, SKILL, COMPANY.dkbmc, COMPANY.pixdine, COMPANY.goodrich, PREPARING, RESUME];
 
   const renderThumbnail = thumbnail => {
-    if (!thumbnail) return <StyledItemThumbnail />;
+    // if (!thumbnail) return <StyledItemThumbnail />;
 
     const ext = thumbnail.split('.').pop();
     const src = `/assets/contents/${thumbnail}`;
@@ -20,12 +21,12 @@ const Home = () => {
     if (ext === 'mp4') {
       return (
         // metadata 먼저 로드해서 최적화
-        <StyledVideoThumbnail src={src} muted autoPlay loop playsInline preload="metadata" />
+        <video src={src} muted autoPlay loop playsInline preload="metadata" />
       );
     }
 
     // lazy 로딩 최적화
-    return <StyledImageThumbnail src={src} alt="thumbnail" loading="lazy" />;
+    return <img src={src} alt="thumbnail" loading="lazy" />;
   };
 
   return (
@@ -38,12 +39,12 @@ const Home = () => {
             <StyledContentItem key={`${to}_${index}`}>
               {hasHash ? (
                 <HashLink smooth to={to}>
-                  {renderThumbnail(thumbnail)}
+                  <StyledThumbnail>{renderThumbnail(thumbnail)}</StyledThumbnail>
                   <StyledItemTitle>{contentName}</StyledItemTitle>
                 </HashLink>
               ) : (
                 <Link to={to} aria-label={`Go to ${contentName} page`}>
-                  {renderThumbnail(thumbnail)}
+                  <StyledThumbnail>{renderThumbnail(thumbnail)}</StyledThumbnail>
                   <StyledItemTitle>{contentName}</StyledItemTitle>
                 </Link>
               )}
@@ -61,31 +62,31 @@ const StyledContentList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px 20px;
+  @media ${media.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
+  }
+  @media ${media.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px 20px;
+  }
 `;
 
 const StyledContentItem = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-const BaseThumbnailStyle = `
+const StyledThumbnail = styled.div`
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 12px;
+  border: 1px solid var(--outline);
   object-fit: cover;
-  background-color: var(--outline);
-`;
-
-const StyledItemThumbnail = styled.div`
-  ${BaseThumbnailStyle}
-`;
-
-const StyledImageThumbnail = styled.img`
-  ${BaseThumbnailStyle}
-`;
-
-const StyledVideoThumbnail = styled.video`
-  ${BaseThumbnailStyle}
+  overflow: hidden;
+  video,
+  img {
+    width: 100%;
+  }
 `;
 
 const StyledItemTitle = styled.strong`

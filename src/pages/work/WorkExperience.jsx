@@ -1,40 +1,8 @@
 import AppLayout from '@/components/AppLayout';
+import { media } from '@/styles/media';
 import { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { WORK_HISTORY } from '../../constants/index';
-
-const flyIn = keyframes`
-  0% {
-    opacity: 0;
-    transform: translate(-300px, 100px) scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0, 0) scale(1);
-  }
-`;
-
-const flyInUp = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(50px) scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-`;
-
-const flyInDown = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(-50px) scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-`;
 
 const WorkExperience = () => {
   const [activeCompany, setActiveCompany] = useState('goodrich');
@@ -86,7 +54,7 @@ const WorkExperience = () => {
 
         <StyledHistory>
           {WORK_HISTORY.find(({ id }) => id === activeCompany)?.projects.map((project, index) => (
-            <StyledHistoryItem key={`${index}-${Date.now()}`} delay={index * 0.2} className="fly-in">
+            <StyledHistoryItem key={`${index}-${Date.now()}`} $delay={index * 0.2} className="fly-in">
               <strong>{project.title}</strong>
               <span>{project.period}</span>
               <p>
@@ -106,6 +74,37 @@ const WorkExperience = () => {
 };
 
 export default WorkExperience;
+
+const flyIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate(-300px, 100px) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+`;
+const flyInUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+`;
+const flyInDown = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+`;
 
 const StyledHistoryBar = styled.div`
   position: relative;
@@ -164,16 +163,12 @@ const StyledHistoryBar = styled.div`
     border-bottom: 4px solid transparent;
     border-right: 6px solid #6719db;
   }
+  @media ${media.mobile} {
+    max-width: none;
+  }
 `;
 
 const StyledItemBox = styled.div`
-  &.fly-in-up {
-    animation: ${flyInUp} 1s ease forwards;
-  }
-  &.fly-in-down {
-    animation: ${flyInDown} 1s ease forwards;
-  }
-
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -183,12 +178,11 @@ const StyledItemBox = styled.div`
   border: ${({ $isActive }) => ($isActive ? '1px solid #6719db' : '1px solid var(--outline)')};
   box-shadow: 3px 0 7px var(--additive-background);
   white-space: nowrap;
-  transform: translateX(-30%);
+  transform: translateX(-45%);
   cursor: pointer;
   transition:
     background-color 0.2s,
     color 0.2s;
-
   strong {
     font-size: 15px;
     font-weight: 600;
@@ -240,15 +234,24 @@ const StyledHistory = styled.ul`
       line-height: 1.15;
     }
   }
+  @media ${media.tablet} {
+    padding: 40px 0;
+    li {
+      flex: 1 1 calc((100% - 40px) / 2);
+      max-width: calc((100% - 40px) / 2);
+    }
+  }
+  @media ${media.mobile} {
+    padding: 30px 0;
+    li {
+      flex: 1 1 100%;
+      max-width: none;
+      width: 100%;
+    }
+  }
 `;
 
 const StyledHistoryItem = styled.li`
-  &.fly-in {
-    animation: ${flyIn} 0.5s ease forwards;
-    animation-delay: ${({ delay }) => delay}s;
-    opacity: 0;
-  }
-
   flex: 1 1 calc((100% - 40px) / 3);
   display: flex;
   flex-direction: column;
@@ -259,7 +262,14 @@ const StyledHistoryItem = styled.li`
   background-color: var(--white);
   border: 1px solid var(--outline);
   box-shadow: 3px 0 7px var(--additive-background);
-
+  &:hover {
+    border: 1px solid var(--icon-disabled);
+  }
+  &.fly-in {
+    animation: ${flyIn} 0.5s ease forwards;
+    animation-delay: ${({ $delay }) => $delay}s;
+    opacity: 0;
+  }
   strong {
     font-size: 16px;
     font-weight: 600;

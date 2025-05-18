@@ -1,14 +1,18 @@
+import LogoDark from '@/assets/images/logo-dark.svg';
+import LogoLight from '@/assets/images/logo-light.svg';
+import useMediaQuery from '@/hooks/useMediaQuery';
 import useGlobalStore from '@/stores';
+import { media } from '@/styles/media';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import LogoDark from '../assets/images/logo-dark.svg';
-import LogoLight from '../assets/images/logo-light.svg';
 import ContextMenu from './ContextMenu';
 import Icon from './Icon';
 
 const Header = () => {
+  const isOverlay = useMediaQuery(media.tablet);
   const toggleNav = useGlobalStore(state => state.toggleNav);
+  const toggleOverlayNav = useGlobalStore(state => state.toggleOverlayNav);
   const theme = useGlobalStore(state => state.theme);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -21,6 +25,14 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleMenuClick = () => {
+    if (isOverlay) {
+      toggleOverlayNav();
+    } else {
+      toggleNav();
+    }
+  };
+
   const normalizedTheme = theme?.toLowerCase();
   const logoSrc = normalizedTheme === 'dark' ? LogoDark : LogoLight;
 
@@ -28,7 +40,7 @@ const Header = () => {
     <StyledHeader $scrolled={isScrolled}>
       <StyledHeaderContainer>
         <StyledHeaderContent>
-          <StyledMenubutton onClick={toggleNav}>
+          <StyledMenubutton onClick={handleMenuClick}>
             <Icon type="ai" iconName="AiOutlineMenu" />
           </StyledMenubutton>
           <StyledLogo to="/">

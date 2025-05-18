@@ -1,4 +1,5 @@
 import AppLayout from '@/components/AppLayout';
+import { media } from '@/styles/media';
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
@@ -29,7 +30,7 @@ const Skill = () => {
   return (
     <AppLayout>
       {/* <PageTitle title="Skills" /> */}
-      <StyledDetail>
+      <StyledWrap>
         <StyledVisual onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
           <StyledVisualLine>
             <StyledTrack $direction="right" $isHovered={isHovered}>
@@ -95,7 +96,7 @@ const Skill = () => {
             ))}
           </StyledCardList>
         </StyledSection>
-      </StyledDetail>
+      </StyledWrap>
     </AppLayout>
   );
 };
@@ -122,34 +123,7 @@ const fadeUp = keyframes`
     transform: translateY(0);
   }
 `;
-
-const StyledDetail = styled.div``;
-
-const StyledSection = styled.section``;
-const StyledCardList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
-  margin-top: 60px;
-`;
-const StyledCardItem = styled.li`
-  padding: 30px;
-  border: 1px solid var(--outline);
-  border-radius: 20px;
-  box-shadow: 3px 0 7px rgb(108 108 108 / 10%);
-  opacity: 0;
-  animation: ${fadeUp} 0.6s ease-out forwards;
-  animation-delay: ${({ index }) => index * 0.3}s;
-
-  strong {
-    font-size: 20px;
-  }
-  p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-top: 20px;
-  }
-`;
+const StyledWrap = styled.div``;
 
 const StyledVisual = styled.div`
   display: flex;
@@ -157,6 +131,9 @@ const StyledVisual = styled.div`
   gap: 20px;
   width: 100%;
   padding: 20px 0;
+  @media ${media.mobile} {
+    padding: 0;
+  }
 `;
 
 const StyledVisualLine = styled.div`
@@ -172,6 +149,13 @@ const StyledSkillItem = styled.div`
   font-size: 100px;
   font-weight: 300;
   letter-spacing: -6px;
+
+  @media ${media.mobile} {
+    margin-right: 20px;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: -1px;
+  }
 `;
 
 const StyledTrack = styled.div`
@@ -204,5 +188,57 @@ const StyledSkillIcon = styled.span`
     width: 50px;
     height: 50px;
     object-fit: contain;
+  }
+  @media ${media.mobile} {
+    margin-right: 6px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+`;
+
+const StyledSection = styled.section``;
+const StyledCardList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  margin-top: 60px;
+  @media ${media.tablet} {
+    gap: 20px;
+  }
+  @media ${media.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 40px;
+  }
+`;
+const StyledCardItem = styled.li`
+  padding: 30px;
+  border: 1px solid var(--outline);
+  border-radius: 20px;
+  box-shadow: 3px 0 7px rgb(108 108 108 / 10%);
+  opacity: 0;
+  animation: ${fadeUp} 0.6s ease-out forwards;
+  animation-delay: ${({ index }) => index * 0.3}s;
+
+  strong {
+    font-size: 20px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 20px;
+  }
+  @media ${media.mobile} {
+    padding: 20px;
+    strong {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.2;
+      margin-top: 10px;
+    }
   }
 `;

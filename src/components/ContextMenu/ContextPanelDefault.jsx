@@ -69,7 +69,7 @@ const StyledUser = styled.span`
   font-size: 14px;
   border-radius: 50%;
   background-color: #6719db;
-  color: var(--white);
+  color: #fff;
   overflow: hidden;
 `;
 

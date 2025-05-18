@@ -1,3 +1,4 @@
+import { media } from '@/styles/media';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
@@ -102,6 +103,13 @@ const StyledLineLeft = styled.strong`
   line-height: 1;
   transform: translateX(0);
   transition: transform 0.3s ease;
+  @media ${media.tablet} {
+    font-size: 160px;
+  }
+  @media ${media.mobile} {
+    font-size: 100px;
+    line-height: 1.1;
+  }
 `;
 const StyledLineRight = styled(StyledLineLeft)`
   text-align: right;
@@ -114,5 +122,16 @@ const StyledSubLine = styled.div`
   strong {
     font-size: 140px;
     font-weight: 300;
+  }
+  @media ${media.tablet} {
+    strong {
+      font-size: 100px;
+      line-height: 1;
+    }
+  }
+  @media ${media.mobile} {
+    strong {
+      font-size: 80px;
+    }
   }
 `;

@@ -1,4 +1,5 @@
 import useGlobalStore from '@/stores';
+import { media } from '@/styles/media';
 import styled from 'styled-components';
 import Navigation from './Navigation';
 
@@ -27,4 +28,9 @@ const StyledMainWrap = styled.main`
   padding: 12px 40px 70px;
   margin-left: ${({ $collapsed }) => ($collapsed ? '80px' : '240px')};
   transition: margin-left 0.3s ease;
+  @media ${media.tablet} {
+    margin-left: 0;
+    padding: 20px 20px 60px;
+    overflow-x: hidden;
+  }
 `;

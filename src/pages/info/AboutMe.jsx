@@ -1,6 +1,7 @@
 import ImgProfile from '@/assets/images/profile.png';
 import AboutMeTop from '@/components/AboutMeTop';
 import AppLayout from '@/components/AppLayout';
+import { media } from '@/styles/media';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -12,11 +13,11 @@ const AboutMe = () => {
       <AboutMeTop />
 
       <StyledDetail>
-        <MotionProfile
+        <StyledProfile
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.8 }}
         >
           <StyledImg>
             <img src={ImgProfile} alt="profile" width={140} />
@@ -50,13 +51,13 @@ const AboutMe = () => {
               </motion.span>
             ))}
           </StyledKeywordList>
-        </MotionProfile>
+        </StyledProfile>
 
-        <MotionContent
-          initial={{ opacity: 0, x: 50 }}
+        <StyledProfileContent
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
+          viewport={{ once: true, amount: 0.8 }}
         >
           <p>
             처음엔 눈앞의 마크업 한 줄이 전부였지만,
@@ -75,7 +76,7 @@ const AboutMe = () => {
             <br /> 작은 변화에서 배우고, 오늘보다 나은 내일의 나를 기대하며
             <br /> 지금 이 순간에도 꾸준히 성장 중 입니다.
           </p>
-        </MotionContent>
+        </StyledProfileContent>
       </StyledDetail>
     </AppLayout>
   );
@@ -83,27 +84,47 @@ const AboutMe = () => {
 
 export default AboutMe;
 
-const StyledDetail = styled.div`
+const StyledDetail = styled.section`
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   min-height: calc(100vh - 200px);
   margin: 100px 0 0;
+
+  @media ${media.tablet} {
+    flex-direction: column;
+    margin-top: 150px;
+  }
 `;
 
-const MotionProfile = styled(motion.div)`
+const StyledProfile = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   gap: 60px;
+  @media ${media.tablet} {
+    width: 100%;
+    max-width: 500px;
+  }
 `;
 
-const MotionContent = styled(motion.div)`
+const StyledProfileContent = styled(motion.div)`
   max-width: 600px;
   p {
     font-size: 20px;
     line-height: 1.6;
+  }
+  @media ${media.tablet} {
+    max-width: none;
+    width: 100%;
+    p {
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.2;
+      word-break: keep-all;
+    }
   }
 `;
 
@@ -119,6 +140,7 @@ const StyledTitle = styled.strong`
   font-weight: 500;
   line-height: 1.3;
   text-align: center;
+  word-break: keep-all;
   span {
     position: relative;
     &:before {
@@ -135,6 +157,9 @@ const StyledTitle = styled.strong`
       transform: scaleX(1);
       z-index: -1;
     }
+  }
+  @media ${media.mobile} {
+    font-size: 24px;
   }
 `;
 

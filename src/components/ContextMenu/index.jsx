@@ -1,5 +1,6 @@
 import { SMALL_NAME } from '@/constants';
 import useGlobalStore from '@/stores';
+import { media } from '@/styles/media';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ContextPanelDefault from './ContextPanelDefault';
@@ -57,6 +58,9 @@ const StyledContext = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1px 6px;
+  @media ${media.mobile} {
+    padding: 0;
+  }
 `;
 const StyledContextBtn = styled.button`
   display: flex;
@@ -69,7 +73,7 @@ const StyledContextBtn = styled.button`
   font-size: 14px;
   border-radius: 50%;
   background-color: #6719db;
-  color: var(--white);
+  color: #fff;
   overflow: hidden;
 `;
 const StyledContextMenuPanel = styled.div`

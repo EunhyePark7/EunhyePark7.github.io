@@ -2,15 +2,18 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from '../Icon';
 
-const NavigationItem = ({ to, iconType = 'ai', iconName, activeIconName, children, isCollapsed }) => {
+const NavigationItem = ({ to, iconType = 'ai', iconName, activeIconName, children, isCollapsed, isOverlay = '' }) => {
+  console.log('isOverlay in NavigationItem:', isOverlay);
   return (
-    <StyledNavItem to={to} end>
+    <StyledNavItem to={to} end $overlay={isOverlay}>
       {({ isActive }) => (
         <>
-          <StyledIconBox $collapsed={isCollapsed}>
+          <StyledIconBox $collapsed={isCollapsed} $overlay={isOverlay} title={isCollapsed ? children : ''}>
             <Icon type={iconType} iconName={iconName} activeIconName={activeIconName} isActive={isActive} />
           </StyledIconBox>
-          <StyledText $collapsed={isCollapsed}>{children}</StyledText>
+          <StyledText $collapsed={isCollapsed} $overlay={isOverlay}>
+            {children}
+          </StyledText>
         </>
       )}
     </StyledNavItem>
@@ -24,10 +27,11 @@ const StyledNavItem = styled(NavLink)`
   align-items: center;
   height: 40px;
   padding: 0 12px;
+
   color: inherit;
-  border-radius: 10px;
+  border-radius: ${({ $overlay }) => ($overlay ? '0' : '10px')};
   text-decoration: none;
-  overflow: hidden;
+  // overflow: hidden;
   white-space: nowrap;
   transition: background-color 0.2s ease;
 

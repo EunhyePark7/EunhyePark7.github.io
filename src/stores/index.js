@@ -5,11 +5,14 @@ const useGlobalStore = create((set, get) => ({
   theme: THEME.LIGHT,
   language: LANGUAGE.EN,
   isNavCollapsed: false,
+  isOverlayNavOpen: false,
   pageHistory: [],
 
   setTheme: theme => set({ theme }),
   setLanguage: language => set({ language }),
   toggleNav: () => set(state => ({ isNavCollapsed: !state.isNavCollapsed })),
+  toggleOverlayNav: () => set(state => ({ isOverlayNavOpen: !state.isOverlayNavOpen })),
+  closeOverlayNav: () => set({ isOverlayNavOpen: false }),
   setPageHistory: page => {
     const { pageHistory } = get();
     const existingIndex = pageHistory.indexOf(page);
