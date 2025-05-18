@@ -142,17 +142,12 @@ export const MENU = {
     iconType: 'ai',
     iconName: 'AiOutlineFileText',
     activeIconName: 'AiFillFileText',
+    contentName: 'Resume',
     thumbnail: 'resume.mp4',
   },
-  CONTACT: {
-    name: {
-      EN: 'Contact',
-      KR: '메일보내기',
-    },
-    to: '/contact',
-    iconType: 'ai',
-    iconName: 'AiOutlineFileText',
-    activeIconName: 'AiFillFileText',
+  PREPARING: {
+    contentName: 'Your company',
+    thumbnail: 'preparingCompany.mp4',
   },
 };
 

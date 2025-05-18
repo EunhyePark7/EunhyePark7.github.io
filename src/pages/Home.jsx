@@ -8,29 +8,34 @@ import styled from 'styled-components';
  * 메인 페이지
  */
 const Home = () => {
-  const { ABOUT_ME, SKILL, COMPANY, RESUME } = MENU;
-  const contentItems = [ABOUT_ME, SKILL, COMPANY.dkbmc, COMPANY.pixdine, COMPANY.goodrich, RESUME];
+  const { ABOUT_ME, SKILL, COMPANY, RESUME, PREPARING } = MENU;
+  const contentItems = [ABOUT_ME, SKILL, COMPANY.dkbmc, COMPANY.pixdine, COMPANY.goodrich, PREPARING, RESUME];
 
   const renderThumbnail = thumbnail => {
     if (!thumbnail) return <StyledItemThumbnail />;
+
     const ext = thumbnail.split('.').pop();
     const src = `/assets/contents/${thumbnail}`;
 
     if (ext === 'mp4') {
-      return <StyledVideoThumbnail src={src} muted autoPlay loop playsInline />;
+      return (
+        // metadata 먼저 로드해서 최적화
+        <StyledVideoThumbnail src={src} muted autoPlay loop playsInline preload="metadata" />
+      );
     }
 
-    return <StyledImageThumbnail src={src} alt="thumbnail" />;
+    // lazy 로딩 최적화
+    return <StyledImageThumbnail src={src} alt="thumbnail" loading="lazy" />;
   };
 
   return (
     <AppLayout>
       <StyledContentList>
         {contentItems.map(({ contentName, to, thumbnail }, index) => {
-          const hasHash = to.includes('#');
+          const hasHash = to && to.includes('#');
 
           return (
-            <StyledContentItem key={to}>
+            <StyledContentItem key={`${to}_${index}`}>
               {hasHash ? (
                 <HashLink smooth to={to}>
                   {renderThumbnail(thumbnail)}
