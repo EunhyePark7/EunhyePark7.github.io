@@ -92,6 +92,7 @@ export const MENU = {
     iconName: 'AiOutlineSmile',
     activeIconName: 'AiFillSmile',
     contentName: 'About Me',
+    thumbnail: 'aboutMe.mp4',
   },
   SKILL: {
     name: {
@@ -103,6 +104,7 @@ export const MENU = {
     iconName: 'AiTwotoneAppstore',
     activeIconName: 'AiFillAppstore',
     contentName: 'Skills',
+    thumbnail: 'skills.png',
   },
   WORK_EXPERIENCE: {
     name: {
@@ -118,14 +120,17 @@ export const MENU = {
     dkbmc: {
       contentName: 'Dkbmc',
       to: '/work#dkbmc',
+      thumbnail: 'dkbmc.png',
     },
     pixdine: {
       contentName: 'Pixdine',
       to: '/work#pixdine',
+      thumbnail: 'pixdine.png',
     },
     goodrich: {
       contentName: 'GoodRich',
       to: '/work#goodrich',
+      thumbnail: 'goodrich.png',
     },
   },
   RESUME: {
@@ -137,5 +142,6 @@ export const MENU = {
     iconType: 'ai',
     iconName: 'AiOutlineFileText',
     activeIconName: 'AiFillFileText',
+    thumbnail: 'resume.mp4',
   },
 };

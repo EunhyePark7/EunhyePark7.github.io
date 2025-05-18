@@ -8,24 +8,37 @@ import styled from 'styled-components';
  * 메인 페이지
  */
 const Home = () => {
-  const { ABOUT_ME, SKILL, COMPANY } = MENU;
-  const contentItems = [ABOUT_ME, SKILL, COMPANY.dkbmc, COMPANY.pixdine, COMPANY.goodrich];
+  const { ABOUT_ME, SKILL, COMPANY, RESUME } = MENU;
+  const contentItems = [ABOUT_ME, SKILL, COMPANY.dkbmc, COMPANY.pixdine, COMPANY.goodrich, RESUME];
+
+  const renderThumbnail = thumbnail => {
+    if (!thumbnail) return <StyledItemThumbnail />;
+    const ext = thumbnail.split('.').pop();
+    const src = `/assets/contents/${thumbnail}`;
+
+    if (ext === 'mp4') {
+      return <StyledVideoThumbnail src={src} muted autoPlay loop playsInline />;
+    }
+
+    return <StyledImageThumbnail src={src} alt="thumbnail" />;
+  };
+
   return (
     <AppLayout>
       <StyledContentList>
-        {contentItems.map(({ contentName, to }, index) => {
+        {contentItems.map(({ contentName, to, thumbnail }, index) => {
           const hasHash = to.includes('#');
 
           return (
             <StyledContentItem key={to}>
               {hasHash ? (
                 <HashLink smooth to={to}>
-                  <StyledItemThumbnail />
+                  {renderThumbnail(thumbnail)}
                   <StyledItemTitle>{contentName}</StyledItemTitle>
                 </HashLink>
               ) : (
                 <Link to={to} aria-label={`Go to ${contentName} page`}>
-                  <StyledItemThumbnail />
+                  {renderThumbnail(thumbnail)}
                   <StyledItemTitle>{contentName}</StyledItemTitle>
                 </Link>
               )}
@@ -44,18 +57,32 @@ const StyledContentList = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 30px 20px;
 `;
+
 const StyledContentItem = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const StyledItemThumbnail = styled.div`
+const BaseThumbnailStyle = `
   width: 100%;
-  height: auto;
   aspect-ratio: 16/9;
   border-radius: 12px;
+  object-fit: cover;
   background-color: var(--outline);
 `;
+
+const StyledItemThumbnail = styled.div`
+  ${BaseThumbnailStyle}
+`;
+
+const StyledImageThumbnail = styled.img`
+  ${BaseThumbnailStyle}
+`;
+
+const StyledVideoThumbnail = styled.video`
+  ${BaseThumbnailStyle}
+`;
+
 const StyledItemTitle = styled.strong`
   display: block;
   padding: 0 10px;
