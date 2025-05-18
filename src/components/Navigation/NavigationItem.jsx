@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Icon from '../Icon';
 
 const NavigationItem = ({ to, iconType = 'ai', iconName, activeIconName, children, isCollapsed, isOverlay = '' }) => {
-  console.log('isOverlay in NavigationItem:', isOverlay);
   return (
     <StyledNavItem to={to} end $overlay={isOverlay}>
       {({ isActive }) => (
