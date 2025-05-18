@@ -1,25 +1,42 @@
-import { MENU } from '@/constants';
+// NavigationBottom.tsx
+import { CONTACT_ME } from '@/constants';
+import useGlobalStore from '@/stores';
+import { useState } from 'react';
 import styled from 'styled-components';
+
+import ContactFormModal from '../ContactFormModal';
 import NavigationItem from './NavigationItem';
 
-const bottomNavItems = [MENU.CONTACT];
+const NavigationBottom = () => {
+  const language = useGlobalStore(state => state.language);
+  const isNavCollapsed = useGlobalStore(state => state.isNavCollapsed);
+  const [isModalOpen, setModalOpen] = useState(false);
 
-const NavigationBottom = ({ isCollapsed, language }) => {
+  const openGithub = () => {
+    window.open('https://github.com/EunhyePark7/EunhyePark7.github.io');
+  };
+
   return (
     <StyledWrap>
       <StyledDivider />
-      {bottomNavItems.map(({ name, to, iconType, iconName, activeIconName }) => (
-        <NavigationItem
-          key={to}
-          to={to}
-          iconType={iconType}
-          iconName={iconName}
-          activeIconName={activeIconName}
-          isCollapsed={isCollapsed}
-        >
-          {name[language]}
-        </NavigationItem>
-      ))}
+      <NavigationItem
+        iconType={CONTACT_ME.CONTACT.iconType}
+        iconName={CONTACT_ME.CONTACT.iconName}
+        activeIconName={CONTACT_ME.CONTACT.activeIconName}
+        isCollapsed={isNavCollapsed}
+      >
+        <div onClick={() => setModalOpen(true)}>{CONTACT_ME.CONTACT.name[language]}</div>
+      </NavigationItem>
+      <NavigationItem
+        iconType={CONTACT_ME.GITHUB.iconType}
+        iconName={CONTACT_ME.GITHUB.iconName}
+        activeIconName={CONTACT_ME.GITHUB.activeIconName}
+        isCollapsed={isNavCollapsed}
+      >
+        <div onClick={openGithub}>{CONTACT_ME.GITHUB.name[language]}</div>
+      </NavigationItem>
+
+      <ContactFormModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </StyledWrap>
   );
 };

@@ -37,7 +37,7 @@ const Navigation = () => {
         </NavigationItem>
       ))}
 
-      <NavigationBottom isCollapsed={isNavCollapsed} language={language} />
+      <NavigationBottom />
     </StyledNavigation>
   );
 };

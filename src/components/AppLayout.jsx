@@ -9,7 +9,7 @@ import styled from 'styled-components';
 const AppLayout = ({ children }) => {
   const location = useLocation();
   const setPageHistory = useGlobalStore(state => state.setPageHistory);
-  console.log(useGlobalStore(state => state.pageHistory));
+
   useEffect(() => {
     const getPageAlias = pathname => {
       switch (pathname) {
@@ -27,6 +27,7 @@ const AppLayout = ({ children }) => {
       }
     };
 
+    // TODO 추후 다녀간 페이지 작업 필요
     const pageAlias = getPageAlias(location.pathname);
     if (pageAlias) {
       setPageHistory(pageAlias);

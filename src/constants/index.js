@@ -155,3 +155,22 @@ export const MENU = {
     activeIconName: 'AiFillFileText',
   },
 };
+
+export const CONTACT_ME = {
+  CONTACT: {
+    name: {
+      EN: 'Contact',
+      KR: '메일보내기',
+    },
+    iconType: 'ai',
+    iconName: 'AiOutlineMail',
+  },
+  GITHUB: {
+    name: {
+      EN: 'Github',
+      KR: 'Github',
+    },
+    iconType: 'ai',
+    iconName: 'AiOutlineGithub',
+  },
+};
