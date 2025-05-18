@@ -2,7 +2,8 @@ import { MENU } from '@/constants';
 import useGlobalStore from '@/stores';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import MenuItem from './MenuItem';
+import NavigationBottom from './NavigationBottom';
+import NavigationItem from './NavigationItem';
 
 const Navigation = () => {
   const language = useGlobalStore(state => state.language);
@@ -24,7 +25,7 @@ const Navigation = () => {
   return (
     <StyledNavigation $collapsed={isNavCollapsed} $scrolled={isScrolled} role="navigation" aria-label="Main Navigation">
       {navItems.map(({ name, to, iconType, iconName, activeIconName }) => (
-        <MenuItem
+        <NavigationItem
           key={to}
           to={to}
           iconType={iconType}
@@ -33,8 +34,10 @@ const Navigation = () => {
           isCollapsed={isNavCollapsed}
         >
           {name[language]}
-        </MenuItem>
+        </NavigationItem>
       ))}
+
+      <NavigationBottom isCollapsed={isNavCollapsed} language={language} />
     </StyledNavigation>
   );
 };

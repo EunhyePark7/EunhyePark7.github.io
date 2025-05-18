@@ -8,6 +8,7 @@ const Skill = React.lazy(() => import('@/pages/skill/Skill'));
 const WorkExperience = React.lazy(() => import('@/pages/work/WorkExperience'));
 const SelfIntroduction = React.lazy(() => import('@/pages/info/SelfIntroduction'));
 const Resume = React.lazy(() => import('@/pages/info/Resume'));
+const Contact = React.lazy(() => import('@/pages/info/Contact'));
 const Error404 = React.lazy(() => import('@/pages/error/Error404'));
 
 const routes = [
@@ -34,6 +35,10 @@ const routes = [
   {
     path: '/resume',
     element: <Resume />,
+  },
+  {
+    path: '/contact',
+    element: <Contact />,
   },
   {
     path: '*',

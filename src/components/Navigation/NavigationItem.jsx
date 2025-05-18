@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from '../Icon';
 
-const MenuItem = ({ to, iconType = 'ai', iconName, activeIconName, children, isCollapsed }) => {
+const NavigationItem = ({ to, iconType = 'ai', iconName, activeIconName, children, isCollapsed }) => {
   return (
     <StyledNavItem to={to} end>
       {({ isActive }) => (
@@ -17,7 +17,7 @@ const MenuItem = ({ to, iconType = 'ai', iconName, activeIconName, children, isC
   );
 };
 
-export default MenuItem;
+export default NavigationItem;
 
 const StyledNavItem = styled(NavLink)`
   display: flex;
