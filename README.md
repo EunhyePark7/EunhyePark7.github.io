@@ -1,109 +1,134 @@
-# Vite React JavaScript with Sass Setup
+# 🧑‍💻 Park Eunhye Portfolio
 
-Step-by-step template for setting up a React JavaScript project with Vite and Sass
+박은혜의 포트폴리오 웹사이트입니다.
 
-## Project Structure
+## 🌐 GitHub
 
-Here is an example of a project structure
+- [https://github.com/EunhyePark7/EunhyePark7.github.io](https://github.com/EunhyePark7/EunhyePark7.github.io)
+
+## 🚀 GitHub Page
+
+- [https://eunhyepark7.github.io/](https://eunhyepark7.github.io/)
+
+## 📦 Getting Started
+
+```bash
+git clone https://github.com/EunhyePark7/EunhyePark7.github.io.git
+cd EunhyePark7.github.io
+nvm install
+nvm use
+npm install
+npm run dev
+```
+
+## 📘 Environment
+
+- Node.js: v20.3.0
+- npm: 9.6.7
+  > `package.json`의 `engines` 필드에서 버전을 강제하고 있으며, 버전이 다를 경우 설치 또는 실행 시 경고가 발생할 수 있습니다.
+
+## 🛠 Tech Stack
+
+- **Frontend**: Vite, React, React Router, zustand
+- **Style**: SCSS, styled-component, react-icon
+- **Tooling**: Git, GitHub Pages, ESLint, Prettier
+
+## 📂 Deployment
+
+이 프로젝트는 GitHub Pages를 통해 배포됩니다.
+
+- local 배포
+
+```bash
+npm run build
+npm run deploy
+```
+
+- Github Action 자동 배포
+  [https://github.com/EunhyePark7/EunhyePark7.github.io/blob/main/.github/workflows/deploy.yml](https://github.com/EunhyePark7/EunhyePark7.github.io/blob/main/.github/workflows/deploy.yml)
+
+## 🗂️ Project Structure
 
 ```
 my-project/
-├── node_modules/
+├── .github/
+│ └── workflows/
+│ │ └── delpoy.yml
+├── .vscode/
+│ └── setting.json
+├── public/
+│ ├── assets/
+│ └── icons/
 ├── src/
-│   ├── assets/
-│   │   └── styles/
-│   │   │   ├── main.scss
-│   │   │   └── variables.scss
-│   │   ├── images/
-│   │   └── fonts/
-│   ├── components/
-│   │   ├── Header.jsx
-│   │   ├── Footer.jsx
-│   │   ├── Sidebar.jsx
-│   │   └── MainContent.jsx
-│   ├── App.jsx
-│   └── main.jsx
-├── index.html
+│ ├── assets/
+│ │ ├── styles/
+│ │ │ ├── main.scss
+│ │ │ └── variables.scss
+│ │ ├── images/
+│ │ ├── icons/
+│ │ └── fonts/
+│ ├── components/
+│ │ ├── Company/
+│ │ │ ├── Dkbmc.jsx
+│ │ │ ├── GoodRich.jsx
+│ │ │ └── Pixdine.jsx
+│ │ ├── ContextMenu/
+│ │ │ ├── ContextPanelDefault.jsx
+│ │ │ ├── ContextPanelLanguage.jsx
+│ │ │ ├── ContextPanelTheme.jsx
+│ │ │ └── index.jsx
+│ │ ├── Navigation/
+│ │ │ ├── NavigationBottom.jsx
+│ │ │ ├── NavigationItem.jsx
+│ │ │ └── index.jsx
+│ │ ├── AboutMeTop.jsx
+│ │ ├── AppLayout.jsx
+│ │ ├── ContactFormModal.jsx
+│ │ ├── Header.jsx
+│ │ ├── Icon.jsx
+│ │ ├── MainContainer.jsx
+│ │ ├── PageTitle.jsx
+│ │ └── ThemeProvider.jsx
+│ ├── pages/
+│ │ ├── error/
+│ │ │ └── Error404.jsx
+│ │ ├── info/
+│ │ │ ├── AboutMe.jsx
+│ │ │ ├── Contact.jsx
+│ │ │ ├── Resume.jsx
+│ │ │ └── SelfIntroduction.jsx
+│ │ ├── skill/
+│ │ │ └── Skill.jsx
+│ │ ├── work/
+│ │ │ └── WorkExperience.jsx
+│ │ └── Home.jsx
+│ ├── constants/
+│ │ └── index.jsx
+│ ├── routes/
+│ │ └── index.jsx
+│ ├── stores/
+│ │ └── index.jsx
+│ ├── styles/
+│ │ └── main.scss
+│ ├── App.jsx
+│ └── main.jsx
+├── .env
+├── .eslintrc.js
 ├── .gitignore
+├── .nvmrc
+├── .prettierrc
+├── babel.config.js
+├── index.html
+├── jsconfig.json
 ├── package.json
+├── package-lock.json
 ├── README.md
 └── vite.config.js
-
 ```
 
-## Getting Started
+## 📬 Contact
 
-1. Open the terminal and navigate to the directory where you want to create the project.
-2. Initializing a new React project using the latest version of Vite: `npm create vite@latest my-project --template react`
-3. Navigate into the project directory `cd my-project`
-4. Run `npm install` to install the dependencies.
-5. Install Sass: `npm add -D sass` (add Sass to the project as a devDependency)
-6. To start the project, run `npm run dev`.
-7. Open the project in Visual Studio Code: `code .`
+궁금한 점은 아래 이메일로 연락 주세요.
 
-#### In Visual Studio Code:
-
-8. Remove any unused content/files (e.g states, logos and CSS files).
-9. Inside the 'assets' folder, create a 'styles' subfolder and add two files: 'main.scss' and 'variables.scss'.
-   The 'variables.scss' file will be used to store all Sass variables.
-10. Import "variables.scss" to "main.scss" file: `@use './variables.scss' as *;`
-
-#### Testing
-
-You can now start using Sass in your project. As a test, create an empty div with an h1 tag saying "Hello World" in the `App.jsx` file.
-
- ```
- function App() {
-   return (
-     <div>
-       <h1>Hello World</h1>
-     </div>
-   );
- }
-
- export default App;
- ```
-Example of the variables.scss file:
-
-```
-// Declare SCSS variables
-$primary-color: #333;
-$secondary-color: #ccc;
-$accent: #ffa500;
-$font-stack: Helvetica, sans-serif;
-
-// Add more variables as needed
-```
-Import "variables.scss" to "main.scss"
-```
-@use './variables.scss' as *;
-
-//example
-body {
-    background: $secondary;
-    font-size: 16px;
-}
-
-h1 {
-    color: $primary;
-    border: 5px solid $accent;
-    padding: 0.5rem 1rem;
-    font-family: $font-stack;
-}
-
-```
-To use this style, import it into `App.jsx` by adding `import './assets/styles/main.scss'`.
-
- ```
- import './assets/styles/main.scss';
-
- function App() {
-   return (
-     <div>
-       <h1>Hello World</h1>
-     </div>
-   );
- }
-
- export default App;
- ```
+- 이메일: eungkong333@gmail.com
+- GitHub: [@EunhyePark7](https://github.com/EunhyePark7)
