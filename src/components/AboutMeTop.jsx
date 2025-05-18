@@ -39,10 +39,6 @@ const AboutMeTop = () => {
         right.style.transform = 'translateX(0)';
         subLeft.style.transform = 'translateX(0)';
         subRight.style.transform = 'translateX(0)';
-
-        setTimeout(() => {
-          setHasEntered(true);
-        }, 1000);
       }, 300);
     }
   }, []);
