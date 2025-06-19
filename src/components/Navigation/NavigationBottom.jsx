@@ -24,7 +24,11 @@ const NavigationBottom = () => {
       <StyledDivider />
 
       <StyledItem $overlay={isOverlay} onClick={() => setModalOpen(true)}>
-        <StyledIconBox $collapsed={isCollapsed} $overlay={isOverlay} title={isCollapsed ? children : ''}>
+        <StyledIconBox
+          $collapsed={isCollapsed}
+          $overlay={isOverlay}
+          title={isCollapsed ? CONTACT_ME.CONTACT.name[language] : ''}
+        >
           <Icon
             type={CONTACT_ME.CONTACT.iconType}
             iconName={CONTACT_ME.CONTACT.iconName}
@@ -37,7 +41,11 @@ const NavigationBottom = () => {
       </StyledItem>
 
       <StyledItem $overlay={isOverlay} onClick={openGithub}>
-        <StyledIconBox $collapsed={isCollapsed} $overlay={isOverlay} title={isCollapsed ? children : ''}>
+        <StyledIconBox
+          $collapsed={isCollapsed}
+          $overlay={isOverlay}
+          title={isCollapsed ? CONTACT_ME.GITHUB.name[language] : ''}
+        >
           <Icon
             type={CONTACT_ME.GITHUB.iconType}
             iconName={CONTACT_ME.GITHUB.iconName}
