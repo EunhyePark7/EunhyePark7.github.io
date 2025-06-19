@@ -2,9 +2,18 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from '../Icon';
 
-const NavigationItem = ({ to, iconType = 'ai', iconName, activeIconName, children, isCollapsed, isOverlay = '' }) => {
+const NavigationItem = ({
+  to,
+  iconType = 'ai',
+  iconName,
+  activeIconName,
+  children,
+  isCollapsed,
+  isOverlay = '',
+  onClick,
+}) => {
   return (
-    <StyledNavItem to={to} end $overlay={isOverlay}>
+    <StyledNavItem to={to} end $overlay={isOverlay} onClick={onClick}>
       {({ isActive }) => (
         <>
           <StyledIconBox $collapsed={isCollapsed} $overlay={isOverlay} title={isCollapsed ? children : ''}>

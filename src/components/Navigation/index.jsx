@@ -69,6 +69,7 @@ const Navigation = () => {
             activeIconName={activeIconName}
             isCollapsed={isNavCollapsed}
             isOverlay={isOverlay}
+            onClick={isOverlay ? closeOverlayNav : undefined}
           >
             {name[language]}
           </NavigationItem>

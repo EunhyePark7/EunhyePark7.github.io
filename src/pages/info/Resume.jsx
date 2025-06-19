@@ -61,7 +61,7 @@ const Resume = () => {
               </li>
               <li>
                 <StyledBaseDate>
-                  <span>2005. 03 ~ 2018. 02</span>
+                  <span>2005. 03 ~ 2008. 02</span>
                 </StyledBaseDate>
                 <StyledBaseContent>
                   <strong>세원고등학교</strong>

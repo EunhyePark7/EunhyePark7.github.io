@@ -265,12 +265,12 @@ export const WORK_HISTORY = [
       {
         title: '자사 기업홈페이지 리뉴얼',
         period: '2018.01~2018.03',
-        description: ['디자인 및 마크업 개발'],
+        description: ['마크업 개발'],
       },
       {
         title: '에뛰드 사내 커뮤니티 플랫폼 운영',
         period: '2018.01~2018.10',
-        description: ['디자인 및 마크업 개발'],
+        description: ['마크업 개발'],
       },
       {
         title: 'Lightning UI Template 플러그인 개발',
@@ -280,32 +280,32 @@ export const WORK_HISTORY = [
       {
         title: '올림푸스 영업지원 플랫폼 개발',
         period: '2017.10~2018.02',
-        description: ['디자인 및 마크업 개발'],
+        description: ['마크업 개발'],
       },
       {
         title: 'SK Lubricant Global Partner Portal 프로젝트',
         period: '2017.08~2018.08',
-        description: ['디자인 및 마크업 개발'],
+        description: ['마크업 개발'],
       },
       {
         title: '샘소나이트 온라인몰 구축 및 운영',
         period: '2017.05~2017.07',
-        description: ['디자인 및 마크업 개발'],
+        description: ['마크업 개발'],
       },
       {
         title: 'CJ 제일제당 CRM 시스템 구축',
         period: '2017.01~2017.09',
-        description: ['디자인 및 마크업 개발'],
+        description: ['마크업 개발'],
       },
       {
         title: '에뛰드 사내 커뮤니티 플랫폼 구축',
         period: '2017.01~2017.04',
-        description: ['디자인 및 마크업 개발'],
+        description: ['마크업 개발'],
       },
       {
         title: '샘소나이트 커머스사이트 리뉴얼',
         period: '2016.11~2017.01',
-        description: ['디자인 및 마크업 개발'],
+        description: ['마크업 개발'],
       },
     ],
   },
