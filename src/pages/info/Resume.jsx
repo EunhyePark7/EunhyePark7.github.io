@@ -1,4 +1,4 @@
-import ImgProfile from '@/assets/images/profile.png';
+import { PROFILE_IMAGE as ImgProfile } from '@/constants/assets';
 import AppLayout from '@/components/AppLayout';
 import Icon from '@/components/Icon';
 import { media } from '@/styles/media';

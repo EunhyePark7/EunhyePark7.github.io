@@ -51,8 +51,8 @@ export default AppLayout;
 const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow-x: hidden;
+  min-height: 100%;
+  overflow-x: clip;
 `;
 const StyledOverlayDimmed = styled.div`
   position: fixed;

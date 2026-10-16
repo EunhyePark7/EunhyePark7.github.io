@@ -92,7 +92,7 @@ export const MENU = {
     iconName: 'AiOutlineSmile',
     activeIconName: 'AiFillSmile',
     contentName: 'About Me',
-    thumbnail: 'aboutMe.mp4',
+    thumbnail: '/assets/videos/aboutMe.mp4',
   },
   SKILL: {
     name: {
@@ -104,7 +104,7 @@ export const MENU = {
     iconName: 'AiTwotoneAppstore',
     activeIconName: 'AiFillAppstore',
     contentName: 'Skills',
-    thumbnail: 'skills.png',
+    thumbnail: '/assets/images/thumbnails/skills.png',
   },
   WORK_EXPERIENCE: {
     name: {
@@ -120,17 +120,17 @@ export const MENU = {
     dkbmc: {
       contentName: 'Dkbmc',
       to: '/work#dkbmc',
-      thumbnail: 'dkbmc.png',
+      thumbnail: '/assets/images/thumbnails/dkbmc.png',
     },
     pixdine: {
       contentName: 'Pixdine',
       to: '/work#pixdine',
-      thumbnail: 'pixdine.png',
+      thumbnail: '/assets/images/thumbnails/pixdine.png',
     },
     goodrich: {
       contentName: 'GoodRich',
       to: '/work#goodrich',
-      thumbnail: 'goodrich.png',
+      thumbnail: '/assets/images/thumbnails/goodrich.png',
     },
   },
   RESUME: {
@@ -143,11 +143,11 @@ export const MENU = {
     iconName: 'AiOutlineFileText',
     activeIconName: 'AiFillFileText',
     contentName: 'Resume',
-    thumbnail: 'resume.mp4',
+    thumbnail: '/assets/videos/resume.mp4',
   },
   PREPARING: {
     contentName: 'Your company',
-    thumbnail: 'preparingCompany.mp4',
+    thumbnail: '/assets/videos/preparingCompany.mp4',
   },
 };
 

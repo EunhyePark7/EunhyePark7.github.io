@@ -1,111 +1,81 @@
-import LogoDark from '@/assets/images/logo-dark.svg';
-import LogoLight from '@/assets/images/logo-light.svg';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import useGlobalStore from '@/stores';
 import { media } from '@/styles/media';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import ContextMenu from './ContextMenu';
-import Icon from './Icon';
+import ActionIcon from './ActionIcon';
 
 const Header = () => {
   const isOverlay = useMediaQuery(media.tablet);
-  const toggleNav = useGlobalStore(state => state.toggleNav);
-  const toggleOverlayNav = useGlobalStore(state => state.toggleOverlayNav);
-  const theme = useGlobalStore(state => state.theme);
-  const [isScrolled, setIsScrolled] = useState(false);
-
+  const toggleNav = useGlobalStore((state) => state.toggleNav);
+  const toggleOverlayNav = useGlobalStore((state) => state.toggleOverlayNav);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get('q') || '');
+  const searchRef = useRef(null);
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleMenuClick = () => {
-    if (isOverlay) {
-      toggleOverlayNav();
-    } else {
-      toggleNav();
-    }
+    setSearch(searchParams.get('q') || '');
+  }, [searchParams]);
+  const submitSearch = (event) => {
+    event.preventDefault();
+    navigate(search.trim() ? `/?q=${encodeURIComponent(search.trim())}` : '/');
   };
-
-  const normalizedTheme = theme?.toLowerCase();
-  const logoSrc = normalizedTheme === 'dark' ? LogoDark : LogoLight;
-
   return (
-    <StyledHeader $scrolled={isScrolled}>
-      <StyledHeaderContainer>
-        <StyledHeaderContent>
-          <StyledMenubutton onClick={handleMenuClick}>
-            <Icon type="ai" iconName="AiOutlineMenu" />
-          </StyledMenubutton>
-          <StyledLogo to="/">
-            <img key={logoSrc} src={logoSrc} alt="logo" width="101" height="20" />
-            <h1>Eunhye</h1>
-          </StyledLogo>
-        </StyledHeaderContent>
-        <StyledHeaderContent></StyledHeaderContent>
-        <StyledHeaderContent>
-          <ContextMenu />
-        </StyledHeaderContent>
-      </StyledHeaderContainer>
-    </StyledHeader>
+    <header className="site-header">
+      <div className="header-brand">
+        <button
+          className="menu-button"
+          aria-label="메뉴 열기 또는 접기"
+          onClick={isOverlay ? toggleOverlayNav : toggleNav}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <Link to="/" className="brand-link" aria-label="Eunhye 포트폴리오 홈">
+          <span className="brand-play" aria-hidden="true">
+            ▶
+          </span>
+          <strong>
+            Eunhye<span>folio</span>
+          </strong>
+          <sup>KR</sup>
+        </Link>
+      </div>
+      <form className="header-search" role="search" onSubmit={submitSearch}>
+        <input
+          ref={searchRef}
+          type="search"
+          aria-label="프로젝트 검색"
+          placeholder="어떤 작업이 궁금하세요?"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+        <button
+          aria-label="검색"
+          type="submit"
+          onClick={(event) => {
+            if (window.matchMedia(media.mobile).matches && !search.trim()) {
+              event.preventDefault();
+              searchRef.current?.focus();
+            }
+          }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" strokeWidth="1.5" />
+            <path d="m16 16 5 5" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
+        </button>
+      </form>
+      <div className="header-right">
+        <a href="mailto:eungkong333@gmail.com" className="header-contact">
+          Let's talk <ActionIcon name="chat" />
+        </a>
+        <ContextMenu />
+      </div>
+    </header>
   );
 };
 
 export default Header;
-
-const StyledHeader = styled.header`
-  position: fixed;
-  width: 100%;
-  background-color: ${({ $scrolled }) => ($scrolled ? 'var(--overlay-background)' : 'var(--default-background)')};
-  backdrop-filter: ${({ $scrolled }) => ($scrolled ? 'saturate(180%) blur(8px)' : 'none')};
-  box-shadow: ${({ $scrolled }) => ($scrolled ? '0 1px 10px var(--additive-background)' : 'none')};
-  transition:
-    background-color 0.3s ease,
-    box-shadow 0.3s ease,
-    backdrop-filter 0.3s ease;
-  z-index: 100;
-`;
-
-const StyledHeaderContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  padding: 0 16px;
-`;
-
-const StyledHeaderContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const StyledMenubutton = styled.button`
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  border-radius: 50%;
-  &:hover {
-    background-color: var(--outline);
-  }
-`;
-
-const StyledLogo = styled(Link)`
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  padding: 18px 14px 18px 16px;
-
-  h1 {
-    margin: 2px 0 0 8px;
-    font-size: 20px;
-    font-weight: 500;
-  }
-`;

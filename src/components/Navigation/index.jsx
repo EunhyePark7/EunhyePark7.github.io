@@ -1,5 +1,4 @@
-import LogoDark from '@/assets/images/logo-dark.svg';
-import LogoLight from '@/assets/images/logo-light.svg';
+import { BRAND_LOGOS } from '@/constants/assets';
 import { MENU } from '@/constants';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import useGlobalStore from '@/stores';
@@ -34,7 +33,7 @@ const Navigation = () => {
   }
 
   const normalizedTheme = theme?.toLowerCase();
-  const logoSrc = normalizedTheme === 'dark' ? LogoDark : LogoLight;
+  const logoSrc = normalizedTheme === 'dark' ? BRAND_LOGOS.dark : BRAND_LOGOS.light;
 
   const { HOME, ABOUT_ME, SKILL, WORK_EXPERIENCE, RESUME } = MENU;
   const navItems = [HOME, ABOUT_ME, SKILL, WORK_EXPERIENCE, RESUME];
